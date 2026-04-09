@@ -120,15 +120,15 @@ end
 
 # Base case: 1 is the first positive number and can be written as the sum of two squares
 # in 0 different ways
-Base.iterate(::_Iterator) = 1, _State(1, 0)
+Base.iterate(::_Iterator{T}) where {T} = one(T), _State(one(T), 0)
 
 # Nᵗʰ case: keep incrementing n until we find one with a larger m
-function Base.iterate(iter::_Iterator, state::_State)
-    # NOTE: this is slower than l052199
-    r, a = state.r, state.a
+function Base.iterate(::_Iterator{T}, state::_State{T}) where {T}
+    a = state.a + one(T)
+    r = _number_of_two_square_sums(a)
 
     while r <= state.r
-        a += 1
+        a += one(T)
         r = _number_of_two_square_sums(a)
     end
 

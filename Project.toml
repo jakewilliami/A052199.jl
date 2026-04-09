@@ -1,6 +1,6 @@
 name = "A052199"
 uuid = "2754adbf-597d-4032-86a7-f89741d07c38"
-version = "1.0.2"
+version = "1.0.3"
 authors = ["Jake Ireland <jakewilliami@icloud.com> and contributors"]
 
 [deps]
