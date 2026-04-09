@@ -141,14 +141,9 @@ function a052199(n::Int)
     # `zip` forces `a052199` iterator to short-circut after m iterations
     # Can't use `zip` until v1.13: github.com/JuliaLang/julia/issues/58922
     # return last(last(zip(1:m, a052199())))
-
-    i = 1
-    for a in a052199()
-        n == i && return a
-        i += 1
-    end
-
-    error("unreachable")
+    #
+    # Could use `nth` when it comes out.
+    return first(Iterators.drop(a052199(), n - 1))
 end
 
 # Find the first n A052199 numbers
