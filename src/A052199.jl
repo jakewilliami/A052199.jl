@@ -50,23 +50,9 @@ function a052199(n::Int)
 end
 
 # Find the first n A052199 numbers
-# Based on implementation by Derek Orr, Mar 15 2019
-function l052199(n::Int)
-    A = Int[]
-    a, r_old = 1, -1
-
-    while length(A) < n
-        r = _number_of_two_square_sums(a)
-
-        if r > r_old
-            push!(A, a)
-            r_old = r
-        end
-
-        a += 1
-    end
-
-    return A
-end
+#
+# Previous implementation based on impl by Derek Orr:
+#   <https://github.com/jakewilliami/A052199.jl/blob/v1.0.4/src/A052199.jl#L52-L70>
+l052199(n::Int) = collect(Iterators.take(a052199(), n))
 
 end  # end module
